@@ -7,8 +7,8 @@ umask ${UMASK}
 
 echo "cd to xlink kai data dir: ${DATA_DIR}."
 cd ${DATA_DIR}
-echo "WGet XLink Kai archive: ${DL_URI}"
-wget -q -nc --show-progress --progress=bar:force:noscroll "${DL_URI}."
+echo "WGet XLink Kai archive: ${DL_URI}."
+wget -q -nc --show-progress --progress=bar:force:noscroll "${DL_URI}"
 
 echo "Decompress XLink Kai Archive."
 tar -xvf kaiEngine*
