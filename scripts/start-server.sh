@@ -22,5 +22,11 @@ cd ${DATA_DIR}
 echo "Remove unused folder kaiEngine-*."
 rm -R kaiEngine-*
 
+echo "Set Permission and executable bit on scripts."
+chmod -R 770 kaiengine
+chown -R xlinkkai kaiengine
+chmod -R 770 runforever.sh
+chown -R xlinkkai runforever.sh
+
 echo "Run dumb auto retry XLink Kai Script."
 ./runforever.sh
