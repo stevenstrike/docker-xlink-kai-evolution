@@ -22,6 +22,9 @@ ADD $DL_URI $DATA_DIR
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/ && \
 	chown -R xlinkkai /opt/scripts
+	
+RUN chmod -R 770 $DATA_DIR/kaiEngine-* && \
+	chown -R xlinkkai $DATA_DIR/kaiEngine-*
 
 USER xlinkkai
 
