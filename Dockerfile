@@ -18,6 +18,7 @@ RUN mkdir $DATA_DIR && \
 	chown -R xlinkkai $DATA_DIR && \
 	ulimit -n 2048
 
+ADD $DL_URI $DATA_DIR
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/ && \
 	chown -R xlinkkai /opt/scripts
