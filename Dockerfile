@@ -4,7 +4,7 @@ LABEL maintainer="admin@minenet.at"
 
 RUN dpkg --add-architecture i386 && \
 	apt-get update && \
-	apt-get -y install --no-install-recommends libc6:i386 libstdc++6:i386 libgcc-8-dev:i386 && \
+	apt-get -y install --no-install-recommends sudo libc6:i386 libstdc++6:i386 libgcc-8-dev:i386 && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV DATA_DIR="/xlinkkaievolution"
@@ -15,16 +15,17 @@ ENV GID=100
 
 RUN mkdir $DATA_DIR && \
 	useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID xlinkkai && \
+	adduser xlinkkai sudo && \
 	chown -R xlinkkai $DATA_DIR && \
 	ulimit -n 2048
 
-ADD $DL_URI $DATA_DIR
+ADD $DL_URI /tmp
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/ && \
 	chown -R xlinkkai /opt/scripts
 	
-RUN chmod -R 770 $DATA_DIR/kaiEngine-* && \
-	chown -R xlinkkai $DATA_DIR/kaiEngine-*
+RUN chmod -R 770 /tmp/kaiEngine-* && \
+	chown -R xlinkkai /tmp/kaiEngine-*
 
 USER xlinkkai
 

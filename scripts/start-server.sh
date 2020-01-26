@@ -8,6 +8,9 @@ umask ${UMASK}
 echo "cd to xlink kai data dir: ${DATA_DIR}."
 cd ${DATA_DIR}
 
+echo "Move xlink kai archive from /tmp"
+mv /tmp/kaiEngine*.tar.gz /xlinkkaievolution/
+
 echo "Decompress XLink Kai Archive."
 tar -xvf kaiEngine*
 rm -R kaiEngine*.tar.gz
@@ -29,4 +32,4 @@ chmod -R 770 runforever.sh
 chown -R xlinkkai runforever.sh
 
 echo "Run dumb auto retry XLink Kai Script."
-./runforever.sh
+sudo ./runforever.sh
