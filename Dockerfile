@@ -16,6 +16,7 @@ ENV GID=100
 RUN mkdir $DATA_DIR && \
 	useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID xlinkkai && \
 	adduser xlinkkai sudo && \
+	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
 	chown -R xlinkkai $DATA_DIR && \
 	ulimit -n 2048
 
